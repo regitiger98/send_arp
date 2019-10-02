@@ -87,7 +87,7 @@ bool get_sender_mac(const u_char *packet, uint8_t *send_mac, uint8_t *send_ip) {
 	struct ether_header *ethhdr = (ether_header*)packet;
 	struct arp_header *arphdr = (arp_header*)(packet + sizeof(ether_header));
 
-	if((ntohs(arphdr->op) == ARP_REPLY) && (!memcmp(arphdr->send_ip, send_ip, 4))) {
+	if((ntohs(ethhdr->ether_type) == ETHERTYPE_ARP) && (ntohs(arphdr->op) == ARP_REPLY) && (!memcmp(arphdr->send_ip, send_ip, 4))) {
 		memcpy(send_mac, arphdr->send_mac, 6);
 		return true;
 	}	
