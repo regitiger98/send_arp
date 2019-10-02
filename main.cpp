@@ -13,14 +13,14 @@ int main(int argc, char* argv[]) {
 
 	u_char packet[50];
 	uint8_t my_mac[6], 
-			send_mac[6],
-			mac_ff[6] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff}, 
-			mac_00[6] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00};			
+		send_mac[6],
+		mac_ff[6] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff},
+		mac_00[6] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00};			
 	uint8_t my_ip[4];
 	uint32_t send_ip_l = inet_addr(argv[2]),
-			 tar_ip_l = inet_addr(argv[3]);
+			tar_ip_l = inet_addr(argv[3]);
 	uint8_t *send_ip = (uint8_t*)&send_ip_l,
-			*tar_ip = (uint8_t*)&tar_ip_l;
+		*tar_ip = (uint8_t*)&tar_ip_l;
 	struct pcap_pkthdr *header;
 	const u_char *pkt;
 
